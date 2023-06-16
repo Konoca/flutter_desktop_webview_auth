@@ -18,7 +18,7 @@ class GoogleSignInArgs extends ProviderArgs {
   final host = 'accounts.google.com';
 
   @override
-  final path = '/o/oauth2/auth';
+  final path = '/o/oauth2/v2/auth';
 
   GoogleSignInArgs({
     required this.clientId,
