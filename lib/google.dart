@@ -10,6 +10,7 @@ class GoogleSignInArgs extends ProviderArgs {
   final String accessType;
   final String prompt;
   final bool includeGrantedScopes;
+  final String nonce;
 
   @override
   final String redirectUri;
@@ -25,10 +26,11 @@ class GoogleSignInArgs extends ProviderArgs {
     required this.redirectUri,
     this.scope = _defaultSignInScope,
     this.immediate = false,
-    this.responseType = 'token id_token',
+    this.responseType = 'code',
     this.accessType = 'online',
-    this.prompt = 'consent',
+    this.prompt = 'select_account consent',
     this.includeGrantedScopes = false,
+    this.nonce = generateNonce(),
   });
 
   @override
@@ -42,6 +44,18 @@ class GoogleSignInArgs extends ProviderArgs {
       'access_type': accessType,
       if (prompt.isNotEmpty) 'prompt': prompt,
       'include_granted_scopes': includeGrantedScopes.toString(),
+      'nonce': nonce,
     };
+  }
+
+  String generateNonce({int length = 32}) {
+    const characters =
+        '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+    final random = Random.secure();
+
+    return List.generate(
+      length,
+      (_) => characters[random.nextInt(characters.length)],
+    ).join();
   }
 }
