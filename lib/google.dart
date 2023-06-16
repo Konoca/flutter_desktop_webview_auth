@@ -26,7 +26,7 @@ class GoogleSignInArgs extends ProviderArgs {
     required this.redirectUri,
     this.scope = _defaultSignInScope,
     this.immediate = false,
-    this.responseType = 'code',
+    this.responseType = 'code token id_token',
     this.accessType = 'online',
     this.prompt = 'select_account consent',
     this.includeGrantedScopes = false,
