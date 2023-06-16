@@ -9,7 +9,7 @@ class GoogleSignInArgs extends ProviderArgs {
   final String responseType;
   final String accessType;
   final String prompt;
-  // final bool includeGrantedScopes;
+  final bool includeGrantedScopes;
 
   @override
   final String redirectUri;
