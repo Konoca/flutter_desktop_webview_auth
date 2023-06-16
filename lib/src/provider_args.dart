@@ -27,12 +27,11 @@ abstract class ProviderArgs implements Jsonable {
     final uri = Uri.parse(callbackUrl);
     late Map<String, String> args;
 
-    // if (usesFragment) {
-    //   args = Uri.splitQueryString(uri.fragment);
-    // } else {
-    //   args = uri.queryParameters;
-    // }
-    args = uri.queryParameters;
+    if (usesFragment) {
+      args = Uri.splitQueryString(uri.fragment);
+    } else {
+      args = uri.queryParameters;
+    }
 
     if (args.isNotEmpty) {
       final result = AuthResult(
