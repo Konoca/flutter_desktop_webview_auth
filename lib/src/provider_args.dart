@@ -49,7 +49,7 @@ abstract class ProviderArgs implements Jsonable {
       return SynchronousFuture(result);
     }
 
-    throw Exception('No access token found');
+    throw Exception('No access token found: $args');
   }
 
   @override
