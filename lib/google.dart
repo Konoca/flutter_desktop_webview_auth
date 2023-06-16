@@ -28,7 +28,7 @@ class GoogleSignInArgs extends ProviderArgs {
     this.responseType = 'token id_token',
     this.accessType = 'online',
     this.prompt = 'consent',
-    // this.includeGrantedScopes = false,
+    this.includeGrantedScopes = false,
   });
 
   @override
@@ -41,7 +41,7 @@ class GoogleSignInArgs extends ProviderArgs {
       'redirect_uri': redirectUri,
       'access_type': accessType,
       if (prompt.isNotEmpty) 'prompt': prompt,
-      // 'include_granted_scopes': includeGrantedScopes,
+      'include_granted_scopes': includeGrantedScopes.toString(),
     };
   }
 }
