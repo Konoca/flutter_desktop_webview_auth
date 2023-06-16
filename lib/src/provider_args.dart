@@ -36,14 +36,14 @@ abstract class ProviderArgs implements Jsonable {
 
     if (args.isNotEmpty) {
       final result = AuthResult(
-        accessToken: args['access_token'],
-        idToken: args['id_token'],
-        code: args['code'],
+        accessToken: args['access_token'] ?? '',
+        idToken: args['id_token'] ?? '',
+        code: args['code'] ?? '',
         expiresIn: int.parse("${args['expires_in'] ?? '0'}"),
-        refreshToken: args['refresh_token'],
-        scope: args['scope'],
-        tokenType: args['token_type'],
-        tokenSecret: args['token_secret'],
+        refreshToken: args['refresh_token'] ?? '',
+        scope: args['scope'] ?? '',
+        tokenType: args['token_type'] ?? '',
+        tokenSecret: args['token_secret'] ?? '',
       );
 
       return SynchronousFuture(result);
