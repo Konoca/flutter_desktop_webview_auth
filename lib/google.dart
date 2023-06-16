@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'src/provider_args.dart';
 
 const _defaultSignInScope = 'https://www.googleapis.com/auth/plus.login';
@@ -31,7 +30,7 @@ class GoogleSignInArgs extends ProviderArgs {
     this.accessType = 'online',
     this.prompt = 'select_account consent',
     this.includeGrantedScopes = false,
-    this.nonce = generateNonce(),
+    this.nonce = '',
   });
 
   @override
@@ -45,18 +44,7 @@ class GoogleSignInArgs extends ProviderArgs {
       'access_type': accessType,
       if (prompt.isNotEmpty) 'prompt': prompt,
       'include_granted_scopes': includeGrantedScopes.toString(),
-      'nonce': nonce,
+      if (nonce != '') 'nonce': nonce,
     };
-  }
-
-  String generateNonce({int length = 32}) {
-    const characters =
-        '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
-    final random = Random.secure();
-
-    return List.generate(
-      length,
-      (_) => characters[random.nextInt(characters.length)],
-    ).join();
   }
 }
